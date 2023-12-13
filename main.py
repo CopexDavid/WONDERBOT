@@ -9,7 +9,6 @@ import difflib
 
 TOKEN = '6824226186:AAHTcvt-XgmeBQV1Ua1ng6lCzdwAIHlN7v8'
 bot = telebot.TeleBot(TOKEN)
-# Set your OpenAI API key
 openai.api_key = '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'
 
 class BotState:
@@ -219,17 +218,17 @@ def talk_handle(message):
     # Взаимодействуем с GPT-3.5 Turbo
     try:
         gpt_response = openai.Completion.create(
-            engine="text-davinci-003",  # Используйте gpt-3.5-turbo-1106 для экономии токенов
+            engine="text-davinci-003",  
             prompt=input_text,
-            max_tokens=1000,  # Максимальное количество токенов в ответе
-            temperature=0.7,  # Параметр, влияющий на случайность ответа (меньше значение - более точные ответы)
+            max_tokens=1000,  
+            temperature=0.7,  
             stop=None  # Строка или список строк, указывающих, когда следует завершить генерацию
         )
 
         # Получаем ответ от GPT-3.5 Turbo
         gpt_response_text = gpt_response["choices"][0]["text"]
 
-        # Отправляем ответ пользователю
+      
         bot.send_message(message.chat.id, gpt_response_text, parse_mode='HTML')
     except Exception as e:
         print(f"Error interacting with GPT: {e}")
