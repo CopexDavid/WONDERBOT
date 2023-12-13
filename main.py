@@ -7,9 +7,9 @@ import openai
 import difflib
 
 
-TOKEN = '6824226186:AAHTcvt-XgmeBQV1Ua1ng6lCzdwAIHlN7v8'
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
-openai.api_key = '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'
+openai.api_key = ''
 
 class BotState:
     def __init__(self):
